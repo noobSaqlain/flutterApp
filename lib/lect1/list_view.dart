@@ -10,19 +10,19 @@ class ListPage extends StatefulWidget {
 }
 
 class _ListPageState extends State<ListPage> {
-  var images = [
-    "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U",
-    "https://fastly.picsum.photos/id/242/200/200.jpg?hmac=Z3aa8zbEQkEMFgnVh0Pn96vmCZHhJ17qzCrePYksrcY",
-    "https://fastly.picsum.photos/id/953/200/200.jpg?hmac=S5zbAl9YqUc02Oezl6cR8gcLfF3pwkQ5_AcG8JXjeC0",
-    "https://fastly.picsum.photos/id/772/200/200.jpg?hmac=9euSj4JHTPr7uT5QWVmeNJ8JaqAXY8XmJnYfr_DfBJc"
-  ];
-  var titles = ["DOG", "CITY", "LIGHT", "NATURE"];
-  var subtitles = [
-    "good dog it is",
-    "big city",
-    "bright light",
-    "nature is amazing"
-  ];
+  final List<String> images = [
+        "images/dog.jpg",
+        "images/city.jpg",
+        "images/light.jpg",
+        "images/nature.jpg",
+      ],
+      titles = ["DOG", "CITY", "LIGHT", "NATURE"],
+      subtitles = [
+        "good dog it is",
+        "big city",
+        "bright light",
+        "nature is amazing"
+      ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,14 +31,15 @@ class _ListPageState extends State<ListPage> {
         title: Text(widget.title),
       ),
       body: ListView.separated(
-        itemCount: 4,
+        itemCount: images.length,
         separatorBuilder: (context, index) => const Divider(
           color: Colors.grey,
           thickness: 0.5,
         ),
         itemBuilder: (context, index) => ListTile(
           leading: CircleAvatar(
-            backgroundImage: NetworkImage(images[index]),
+            backgroundImage:
+                AssetImage(images[index]), // changes made here here
           ),
           title: Text(titles[index]),
           subtitle: Text(subtitles[index]),
